@@ -1,0 +1,19 @@
+@startuml diagrama
+
+class PatrullaEspiritual
+class Anexo
+class GranLider
+class TazoDorado{ 
+  - Bool flotando
+  + Flotar()
+
+}
+class Foco
+
+PatrullaEspiritual o-- TazoDorado
+GranLider "1" *-- "*" Foco
+TazoDorado "1" o-- "*" Foco
+
+
+
+@enduml

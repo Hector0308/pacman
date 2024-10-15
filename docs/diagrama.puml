@@ -1,0 +1,166 @@
+@startuml diagrama
+
+class JuegoPacman{
++Iniciargame()
++Pausegame()
++Fingame()
+-puntaje
+-jugador
+-nivel
+-vida 
+}
+
+class Punto{
++desaparecer()
+}
+
+class Personaje{
++Morir()
++Reaparecer()
++Matar()
+-posicion
+}
+
+class Posicion{
+x:Numero
+y:Numero
+}
+
+class Pacman{
+    -Vida:vidapacman
+    -Punto:comerpunto()
+    -Fruta:comerfruta()
+    -SuperBolita:comersuperbolita()
+}
+
+class Fantasma{
++Perseguir()
++Huir()
+-Estado:estados
+}
+
+class Jugador{
++moverPacman()
+}
+
+class Estado{
++Perseguir()
++Huir()
+}
+
+class Fruta{
++comer()
+}
+
+class Animacion{
+    -pixel
+    +dibujar()
+}
+
+class Dibujo{
+-posicion
+-direccion
+}
+
+class SuperBolita{
++Poder()
++Eludir()
+}
+
+class Muro
+
+class Mapa{
++generarMapa()
+}
+
+class Laberinto{
++ReiniciarLaberinto()
++ChecarColisiones()
+}
+
+class Numero
+
+class Vida{
+    +Perder()
+    +Ganar()
+}
+
+class Nivel{
+    +subirNivel()
+    +bajarNivel()
+    dificultad:Numero
+}
+
+class Obstaculo{
+    -tipo
+    +bloquear()
+    +desbloquear()
+}
+
+class Bonus{
+    +darBonus()
+    +quitarBonus()
+}
+
+class Temporizador{
+    +iniciar()
+    +detener()
+    tiempoRestante:Numero
+}
+
+class Evento{
+    +activarEvento()
+    +desactivarEvento()
+}
+
+class Pared{
+    +colisionar()
+}
+
+class Camino{
+    +crearCamino()
+    -direccion
+}
+
+class PowerUp{
+    +otorgarPoder()
+    +caducar()
+}
+
+class Escenario{
+    +cargarEscenario()
+    +reiniciarEscenario()
+}
+
+class Audio{
+    +reproducirSonido()
+    +detenerSonido()
+}
+
+JuegoPacman *-- "1" Personaje 
+JuegoPacman *-- "1" Jugador 
+JuegoPacman *-- "1" Mapa
+JuegoPacman *-- "0..*" Nivel
+Personaje *-- "1" Animacion
+Personaje <|-- Fantasma 
+Fantasma *-- "1..*" Estado
+Personaje <|-- Pacman
+Pacman o-- "0..*" Fruta
+Pacman o-- "0..1" SuperBolita
+Pacman o-- "0..*" Punto
+Animacion *-- "1" Dibujo
+Mapa *-- "1" Laberinto
+Mapa *-- "0..*" Obstaculo
+Mapa *-- "0..*" Camino
+Mapa *-- "0..*" Muro
+Fruta *-- "1" Posicion
+Pacman *-- "1" Vida
+Pacman *-- "0..*" Bonus
+Pacman *-- "0..*" PowerUp
+Posicion *-- "1" Numero
+Escenario *-- "1" Mapa
+Evento *-- "0..*" Temporizador
+Audio *-- "1" Evento
+Pared <|-- Obstaculo
+
+@enduml
