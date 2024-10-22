@@ -3,15 +3,16 @@ class TazoDorado
 private:
     bool flotando;
 public:
-    TazoDorado() {
+    TazoDorado(){
+      this -> flotando = false;
 
     }
-    ~TazoDorado() {
-      this -> flotando = false;
-    }
+    ~TazoDorado() {}
       void Flotar(){
-           this -> flotando = true;  
+        this -> flotando = true;  
 
       }
-    
+    bool Flotando(){
+        return this -> flotando;
+    };
 };
