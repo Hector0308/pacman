@@ -5,7 +5,6 @@
 int main(){
 
      TazoDorado coqueto;
-
      coqueto.Flotar();
 
      std::cout
