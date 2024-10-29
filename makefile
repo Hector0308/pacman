@@ -12,3 +12,9 @@ bin/mem : src/memoria.cpp
 
 assets/mensaje : bin/tazo
 	./bin/tazo > assets/mensaje
+
+runAnimacion : bin/animacion
+	   ./bin/animacion
+
+bin/animacion : src/canvas_animated.cpp
+	g++ src/canvas_animated.cpp -Iinclude -o bin/animacion -std=c++17 -lftxui-screen -lftxui-dom -lftxui-component
